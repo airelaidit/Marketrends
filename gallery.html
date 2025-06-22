@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Marketrend</title>
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-container">
+        <div class="logo">
+          <h1>Marketrend</h1>
+        </div>
+        <div class="nav-links">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="gallery.html" class="active">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="gallery-section">
+    <div class="section-header">
+      <h2>Digital Marketing <span>Platforms</span></h2>
+      <p>The advertising of products online or through other forms of electronic media is known as "digital marketing." A digital marketing campaign is a strategically planned and organized attempt to use digital platforms to advertise a brand, service, or product to a particular audience. Explore digital marketing platform examples</p>
+    </div>
+
+    <div class="gallery-carousel">
+      <button class="carousel-btn prev-btn" aria-label="Previous">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      
+      <div class="gallery-track">
+        <!-- Google Ads Example -->
+        <div class="gallery-card">
+          <div class="gallery-image">
+            <img src="googleads.jpg" alt="Google Ads">
+            <div class="platform-tag">
+              <i class="fab fa-google"></i> Google Ads
+            </div>
+          </div>
+          <div class="gallery-info">
+            <h3>Google Advertising</h3>
+            <p>Includes search ads (Google Search), display ads (across Google Display Network sites), shopping ads, and video ads on YouTube. It’s highly versatile, targeting users actively searching or browsing, great for intent-driven marketing.</p>
+          </div>
+        </div>
+
+        <!-- Instagram Example -->
+        <div class="gallery-card">
+          <div class="gallery-image">
+            <img src="insta.jpg" alt="Instagram Marketing">
+            <div class="platform-tag">
+              <i class="fab fa-instagram"></i> Instagram
+            </div>
+          </div>
+          <div class="gallery-info">
+            <h3>Instagram Advertising</h3>
+            <p>Photo, video, and Stories ads on Instagram, targeting a visually engaged audience. Owned by Facebook, it shares the same targeting engine, making it effective for brand building, influencer marketing, and direct response campaigns.</p>
+          </div>
+        </div>
+
+        <!-- YouTube Example -->
+        <div class="gallery-card">
+          <div class="gallery-image">
+            <img src="youtube.jpg" alt="YouTube Advertising">
+            <div class="platform-tag">
+              <i class="fab fa-youtube"></i> YouTube
+            </div>
+          </div>
+          <div class="gallery-info">
+            <h3>Youtube Advertising</h3>
+            <p>Video ads shown on YouTube before, during, or after videos, or within search results. It leverages Google’s targeting capabilities, ideal for engaging audiences with rich video content and driving awareness or conversions.</p>
+          </div>
+        </div>
+
+        <!-- Facebook Example -->
+        <div class="gallery-card">
+          <div class="gallery-image">
+            <img src="facebook.png" alt="Facebook Ads">
+            <div class="platform-tag">
+              <i class="fab fa-facebook"></i> Facebook
+            </div>
+          </div>
+          <div class="gallery-info">
+            <h3>Facebook Advertising</h3>
+            <p>Ads displayed on Facebook's platform, including News Feed, Stories, Marketplace, and Audience Network. Offers powerful targeting options based on demographics, interests, and behaviors.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="gallery-image">
+            <img src="email2.png" alt="Email Ads">
+            <div class="platform-tag">
+              <i class="fas fa-envelope"></i> Email
+            </div>
+          </div>
+          <div class="gallery-info">
+            <h3>Email Advertising</h3>
+            <p>Using email campaigns to market products or services directly to customers.  It is extremely personalised and cost-effective, making it great for improving potential buyers, increasing conversions, and retaining customers.</p>
+          </div>
+        </div>
+      </div>
+      
+      <button class="carousel-btn next-btn" aria-label="Next">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </section>
+
+ <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h2>Marketrend</h2>
+        <p>Data-driven marketing analytics for smarter decisions</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Connect</h3>
+          <p>Contact Marketrend</p>
+          <p>016 7396848</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Marketrend. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+   document.addEventListener('DOMContentLoaded', () => {
+  const track = document.querySelector('.gallery-track');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  const cards = document.querySelectorAll('.gallery-card');
+  const cardWidth = cards[0].offsetWidth + 32; // card width + gap
+  const visibleCards = Math.floor(track.offsetWidth / cardWidth); // Number of cards visible at once
+  const totalCards = cards.length;
+  
+  let currentPosition = 0;
+  // Calculate max position based on total cards and visible cards
+  const maxPosition = -((totalCards - visibleCards) * cardWidth);
+
+  const updateButtons = () => {
+    prevBtn.disabled = currentPosition === 0;
+    nextBtn.disabled = currentPosition <= maxPosition;
+  };
+
+  prevBtn.addEventListener('click', () => {
+    currentPosition = Math.min(currentPosition + (cardWidth * visibleCards), 0);
+    track.style.transform = `translateX(${currentPosition}px)`;
+    updateButtons();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentPosition = Math.max(currentPosition - (cardWidth * visibleCards), maxPosition);
+    track.style.transform = `translateX(${currentPosition}px)`;
+    updateButtons();
+  });
+
+  // Initialize buttons
+  updateButtons();
+
+  // Touch support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  track.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, {passive: true});
+
+  track.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, {passive: true});
+
+  const handleSwipe = () => {
+    if (touchStartX - touchEndX > 50) {
+      // Swipe left
+      nextBtn.click();
+    } else if (touchEndX - touchStartX > 50) {
+      // Swipe right
+      prevBtn.click();
+    }
+  };
+  
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    const newCardWidth = cards[0].offsetWidth + 32;
+    if (newCardWidth !== cardWidth) {
+      // Recalculate position based on new card width
+      currentPosition = Math.round(currentPosition / cardWidth) * newCardWidth;
+      track.style.transform = `translateX(${currentPosition}px)`;
+    }
+  });
+});
+  </script>
+</body>
+</html>
